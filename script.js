@@ -61,3 +61,42 @@ function beginCountdown(seconds) {
         }
     }, 1000); // Update every second
 }
+
+// Tab Functionality
+const tabs = document.querySelectorAll(".tab-button");
+const tabContents = document.querySelectorAll(".tab-content");
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        document.querySelector(".tab-button.active").classList.remove("active");
+        document.querySelector(".tab-content.active").classList.remove("active");
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).classList.add("active");
+    });
+});
+
+// Workout Consistency
+document.getElementById("update-workout").addEventListener("click", () => {
+    const days = document.getElementById("workout-days").value;
+    document.getElementById("workout-streak").textContent = days;
+});
+
+// Water Intake
+document.getElementById("update-water").addEventListener("click", () => {
+    const cups = document.getElementById("water-cups").value;
+    const progress = Math.min((cups / 8) * 100, 100); // Daily goal: 8 cups
+    document.getElementById("water-progress").textContent = `${Math.round(progress)}%`;
+    document.getElementById("water-bar").style.width = `${progress}%`;
+});
+
+// Step Count
+document.getElementById("update-steps").addEventListener("click", () => {
+    const steps = document.getElementById("step-count").value;
+    document.getElementById("step-total").textContent = steps;
+});
+
+// Active Minutes
+document.getElementById("update-active").addEventListener("click", () => {
+    const minutes = document.getElementById("active-minutes").value;
+    document.getElementById("active-total").textContent = minutes;
+});

@@ -7,34 +7,54 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <header>
-         <h1>Fitness Progress Dashboard</h1>
-     </header>
-     <main>
-         <!-- Dashboard Section --> 
-         <section id="dashboard">
-             <h2>Your Progress</h2>
-             <ul>
-                  <li>Workout Consistency: <span id="workout-consistency">0%</span></li>
-                  <li>Daily Water Intake: <span id="water-intake">0/8 ounces</span></li>
-                  <li>Step Count: <span id="step-count">0 steps</span></li>
-                  <li>Active Minutes: <span id="active-minutes">0 minutes</span>
+    <header>
+        <h1>Fitness Progress Dashboard</h1>
+    </header>
+    <main>
+        <!-- Navigation Tabs -->
+        <nav>
+            <button class="tab-button active" data-tab="workout-tab">Workout Consistency</button>
+            <button class="tab-button" data-tab="water-tab">Daily Water Intake</button>
+            <button class="tab-button" data-tab="steps-tab">Step Count</button>
+            <button class="tab-button" data-tab="active-tab">Active Minutes</button>
+        </nav>
 
-            </ul>
+        <!-- Tab Content -->
+        <section id="workout-tab" class="tab-content active">
+            <h2>Workout Consistency</h2>
+            <label for="workout-days">Enter Days Worked Out:</label>
+            <input type="number" id="workout-days" min="0" value="0">
+            <button id="update-workout">Update</button>
+            <p>Workout Streak: <span id="workout-streak">0</span> days</p>
         </section>
 
-        <!-- Yoga Flow Section -->
-        <section id="yoga-flow">
-            <h2>Daily Yoga Flow</h2>
-            <p id="yoga-pose">"Click below to begin your yoga flow!"</p>
-            <p id="pose-timer" style="font-weight: bold;"></p>
-            <button id="begin-flow">Begin Flow</button>
+        <section id="water-tab" class="tab-content">
+            <h2>Daily Water Intake</h2>
+            <label for="water-cups">Enter Cups of Water:</label>
+            <input type="number" id="water-cups" min="0" value="0">
+            <button id="update-water">Update</button>
+            <p>Today's Water Progress: <span id="water-progress">0%</span></p>
+            <div class="progress-bar">
+                <div id="water-bar"></div>
+            </div>
+        </section>
+
+        <section id="steps-tab" class="tab-content">
+            <h2>Step Count</h2>
+            <label for="step-count">Enter Steps Taken:</label>
+            <input type="number" id="step-count" min="0" value="0">
+            <button id="update-steps">Update</button>
+            <p>Steps Today: <span id="step-total">0</span></p>
+        </section>
+
+        <section id="active-tab" class="tab-content">
+            <h2>Active Minutes</h2>
+            <label for="active-minutes">Enter Active Minutes:</label>
+            <input type="number" id="active-minutes" min="0" value="0">
+            <button id="update-active">Update</button>
+            <p>Active Minutes Today: <span id="active-total">0</span> minutes</p>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2025 BeFitness App</p>
-    </footer>
     <script src="script.js"></script>
 </body>
 </html>
-
