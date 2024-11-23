@@ -3,67 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Progress Dashboard</title>
+    <title>Fitness Progress Tracker</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Fitness Progress Dashboard</h1>
+        <h1>Fitness Progress Tracker</h1>
     </header>
-    <main>
-        <!-- Navigation Tabs -->
-        <nav>
-            <button class="tab-button active" data-tab="workout-tab">Workout Consistency</button>
-            <button class="tab-button" data-tab="water-tab">Daily Water Intake</button>
-            <button class="tab-button" data-tab="steps-tab">Step Count</button>
-            <button class="tab-button" data-tab="active-tab">Active Minutes</button>
-        </nav>
 
-        <!-- Tab Content -->
-        <section id="workout-tab" class="tab-content active">
-            <h2>Workout Consistency</h2>
-            <label for="workout-days">Enter Days Worked Out:</label>
-            <input type="number" id="workout-days" min="0" value="0">
-            <button id="update-workout">Update</button>
-            <p>Workout Streak: <span id="workout-streak">0</span> days</p>
-        </section>
+    <div class="tabs">
+        <button class="tab-button active" data-tab="workout-tab">Workout Consistency</button>
+        <button class="tab-button" data-tab="water-tab">Daily Water Intake</button>
+        <button class="tab-button" data-tab="steps-tab">Step Count</button>
+        <button class="tab-button" data-tab="yoga-tab">Yoga</button>
+    </div>
 
-        <div id="yoga-tab" class="tab-content">
-            <h2>Yoga Timer</h2>
-            <p>Set a timer for your yoga session:</p>
-            <input type="number" id="timer-duration" placeholder="Enter minutes" />
-            <button id="begin-timer">Begin Timer</button>
-            <button id="end-timer">End Timer</button>
+    <div class="tab-content active" id="workout-tab">
+        <h2>Workout Consistency</h2>
+        <label for="workout-days">Workout Streak (days):</label>
+        <input type="number" id="workout-days" placeholder="Enter days">
+        <button id="update-workout">Update</button>
+        <p>Your current streak: <span id="workout-streak">0</span> days</p>
+    </div>
+
+    <div class="tab-content" id="water-tab">
+        <h2>Daily Water Intake</h2>
+        <label for="water-cups">Water intake (cups):</label>
+        <input type="number" id="water-cups" placeholder="Enter cups">
+        <button id="update-water">Update</button>
+        <p>Water progress: <span id="water-progress">0%</span></p>
+        <div class="progress-bar">
+            <div id="water-bar"></div>
+        </div>
+    </div>
+
+    <div class="tab-content" id="steps-tab">
+        <h2>Step Count</h2>
+        <label for="step-count">Steps:</label>
+        <input type="number" id="step-count" placeholder="Enter steps">
+        <button id="update-steps">Update</button>
+        <p>Your total steps: <span id="step-total">0</span></p>
+    </div>
+
+    <div class="tab-content" id="yoga-tab">
+        <h2>Yoga</h2>
+        <div>
+            <h3>Yoga Poses</h3>
+            <div class="yoga-poses">
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 1">
+                    <p>Downward Dog</p>
+                </div>
+                <div class="pose">
+                    <img src="pose2.jpg" alt="Pose 2">
+                    <p>Warrior II</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h3>Meditation Playlist</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/5qap5aO4i9A" title="Meditation Playlist" frameborder="0"></iframe>
+        </div>
+        <div>
+            <h3>Yoga Timer</h3>
+            <input type="number" id="timer-duration" placeholder="Enter minutes">
+            <button id="start-timer">Start Timer</button>
+            <button id="stop-timer">Stop Timer</button>
             <p id="timer-display">0:00</p>
         </div>
-        
-        <section id="water-tab" class="tab-content">
-            <h2>Daily Water Intake</h2>
-            <label for="water-cups">Enter Cups of Water:</label>
-            <input type="number" id="water-cups" min="0" value="0">
-            <button id="update-water">Update</button>
-            <p>Today's Water Progress: <span id="water-progress">0%</span></p>
-            <div class="progress-bar">
-                <div id="water-bar"></div>
-            </div>
-        </section>
+    </div>
 
-        <section id="steps-tab" class="tab-content">
-            <h2>Step Count</h2>
-            <label for="step-count">Enter Steps Taken:</label>
-            <input type="number" id="step-count" min="0" value="0">
-            <button id="update-steps">Update</button>
-            <p>Steps Today: <span id="step-total">0</span></p>
-        </section>
-
-        <section id="active-tab" class="tab-content">
-            <h2>Active Minutes</h2>
-            <label for="active-minutes">Enter Active Minutes:</label>
-            <input type="number" id="active-minutes" min="0" value="0">
-            <button id="update-active">Update</button>
-            <p>Active Minutes Today: <span id="active-total">0</span> minutes</p>
-        </section>
-    </main>
     <script src="script.js"></script>
 </body>
 </html>
