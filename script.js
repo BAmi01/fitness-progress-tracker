@@ -13,7 +13,6 @@ const yogaPoses = [
 ];
 
 let currentPoseIndex = 0;
-let yogaInterval;
 let countdown;
 
 // Begin Yoga Flow
@@ -62,41 +61,82 @@ function beginCountdown(seconds) {
     }, 1000); // Update every second
 }
 
-// Tab Functionality
+// Tab Switching Functionality
 const tabs = document.querySelectorAll(".tab-button");
 const tabContents = document.querySelectorAll(".tab-content");
 
 tabs.forEach(tab => {
     tab.addEventListener("click", () => {
+        // Remove "active" class from all tabs and contents
         document.querySelector(".tab-button.active").classList.remove("active");
         document.querySelector(".tab-content.active").classList.remove("active");
+
+        // Add "active" class to the clicked tab and corresponding content
         tab.classList.add("active");
-        document.getElementById(tab.dataset.tab).classList.add("active");
+        const targetTab = tab.getAttribute("data-tab");
+        document.getElementById(targetTab).classList.add("active");
     });
 });
 
-// Workout Consistency
+// Workout Consistency: Update Workout Streak
 document.getElementById("update-workout").addEventListener("click", () => {
-    const days = document.getElementById("workout-days").value;
+    const days = parseInt(document.getElementById("workout-days").value) || 0;
     document.getElementById("workout-streak").textContent = days;
+    alert(`Workout streak updated to ${days} days!`);
 });
 
-// Water Intake
+// Water Intake: Update Water Progress
 document.getElementById("update-water").addEventListener("click", () => {
-    const cups = document.getElementById("water-cups").value;
+    const cups = parseInt(document.getElementById("water-cups").value) || 0;
     const progress = Math.min((cups / 8) * 100, 100); // Daily goal: 8 cups
     document.getElementById("water-progress").textContent = `${Math.round(progress)}%`;
     document.getElementById("water-bar").style.width = `${progress}%`;
+    alert(`Water intake updated: ${cups} cups (${Math.round(progress)}% progress).`);
 });
 
-// Step Count
+// Step Count: Update Step Total
 document.getElementById("update-steps").addEventListener("click", () => {
-    const steps = document.getElementById("step-count").value;
+    const steps = parseInt(document.getElementById("step-count").value) || 0;
     document.getElementById("step-total").textContent = steps;
+    alert(`Step count updated to ${steps}!`);
 });
 
-// Active Minutes
+// Active Minutes: Update Active Total
 document.getElementById("update-active").addEventListener("click", () => {
-    const minutes = document.getElementById("active-minutes").value;
+    const minutes = parseInt(document.getElementById("active-minutes").value) || 0;
     document.getElementById("active-total").textContent = minutes;
+    alert(`Active minutes updated to ${minutes}!`);
+});
+
+// Yoga Timer: Countdown Timer Feature
+let yogaInterval;
+document.getElementById("start-timer").addEventListener("click", () => {
+    let timeLeft = parseInt(document.getElementById("timer-duration").value) * 60; // Convert minutes to seconds
+    const timerDisplay = document.getElementById("timer-display");
+
+    // Clear existing timer if any
+    clearInterval(yogaInterval);
+
+    if (isNaN(timeLeft) || timeLeft <= 0) {
+        alert("Please enter a valid number of minutes.");
+        return;
+    }
+
+    yogaInterval = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(yogaInterval);
+            alert("Yoga session complete! Namaste 🧘");
+        }
+        timeLeft--;
+    }, 1000);
+});
+
+document.getElementById("stop-timer").addEventListener("click", () => {
+    clearInterval(yogaInterval);
+    document.getElementById("timer-display").textContent = "0:00";
+    alert("Timer stopped.");
 });
