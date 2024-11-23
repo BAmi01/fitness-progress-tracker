@@ -12,8 +12,8 @@
     </header>
 
     <div class="tabs">
-        <button class="tab-button active" data-tab="workout-tab">Workout Consistency</button>
-        <button class="tab-button" data-tab="water-tab">Daily Water Intake</button>
+        <button class="tab-button active" data-tab="workout-tab">Workout Consistency <img src="workout-icon.png" alt="Workout Icon" class="icon"></button>
+        <button class="tab-button" data-tab="water-tab">Daily Water Intake <img src="water-icon.png" alt="Water Icon" class="icon"></button>
         <button class="tab-button" data-tab="steps-tab">Step Count</button>
         <button class="tab-button" data-tab="yoga-tab">Yoga</button>
     </div>
@@ -24,12 +24,16 @@
         <input type="number" id="workout-days" placeholder="Enter days">
         <button id="update-workout">Update</button>
         <p>Your current streak: <span id="workout-streak">0</span> days</p>
+        <div id="calendar">
+            <h3>Workout Calendar</h3>
+            <div id="calendar-grid"></div>
+        </div>
     </div>
 
     <div class="tab-content" id="water-tab">
         <h2>Daily Water Intake</h2>
-        <label for="water-cups">Water intake (cups):</label>
-        <input type="number" id="water-cups" placeholder="Enter cups">
+        <label for="water-gallons">Water intake (gallons):</label>
+        <input type="number" id="water-gallons" placeholder="Enter gallons">
         <button id="update-water">Update</button>
         <p>Water progress: <span id="water-progress">0%</span></p>
         <div class="progress-bar">
@@ -50,29 +54,59 @@
         <div>
             <h3>Yoga Poses</h3>
             <div class="yoga-poses">
+                <!-- Repeat this block for each pose -->
                 <div class="pose">
                     <img src="pose1.jpg" alt="Pose 1">
-                    <p>Downward Dog</p>
+                    <p>Child's Pose</p>
                 </div>
                 <div class="pose">
                     <img src="pose2.jpg" alt="Pose 2">
-                    <p>Warrior II</p>
+                    <p>Cat Pose</p>
                 </div>
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 3">
+                    <p>Cow Pose</p>
+                </div>
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 4">
+                    <p>Downward-facing Dog Pose</p>
+                </div>
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 5">
+                    <p>Plank Pose</p>
+                </div>
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 6">
+                    <p>Cobra Pose</p>
+                </div>
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 7">
+                    <p>Mountain Pose</p>
+                </div>
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 8">
+                    <p>Warrior I Pose</p>
+                </div>
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 9">
+                    <p>Warrior II Pose</p>
+                </div>
+                <div class="pose">
+                    <img src="pose1.jpg" alt="Pose 10">
+                    <p>Forward Fold Pose</p>
+                <!-- Repeat up to 10 poses -->
             </div>
         </div>
         <div>
-            <h3>Meditation Playlist</h3>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/5qap5aO4i9A" title="Meditation Playlist" frameborder="0"></iframe>
-        </div>
-        <div>
-            <h3>Yoga Timer</h3>
-            <input type="number" id="timer-duration" placeholder="Enter minutes">
-            <button id="start-timer">Start Timer</button>
-            <button id="stop-timer">Stop Timer</button>
-            <p id="timer-display">0:00</p>
-        </div>
+            <h3>Meditation Sounds</h3>
+        <!-- Spotify Meditation Playlist Embed -->
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9uKNf5jGX6m?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    <div>
+        <h3>Yoga Timer</h3>
+        <input type="number" id="timer-duration" placeholder="Enter minutes">
+        <button id="start-timer">Start Timer</button>
+        <button id="stop-timer">Stop Timer</button>
+        <p id="timer-display">0:00</p>
+    </div>
+</div>

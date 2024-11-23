@@ -13,24 +13,28 @@ tabs.forEach(tab => {
     });
 });
 
-// Workout Consistency
+// Workout Consistency with Calendar
 document.getElementById("update-workout").addEventListener("click", () => {
     const days = parseInt(document.getElementById("workout-days").value) || 0;
     document.getElementById("workout-streak").textContent = days;
+
+    const calendarGrid = document.getElementById("calendar-grid");
+    calendarGrid.innerHTML = ""; // Clear previous dots
+
+    for (let i = 1; i <= 31; i++) {
+        const dayDiv = document.createElement("div");
+        dayDiv.textContent = i;
+        if (i <= days) dayDiv.classList.add("workout-day");
+        calendarGrid.appendChild(dayDiv);
+    }
 });
 
 // Water Intake
 document.getElementById("update-water").addEventListener("click", () => {
-    const cups = parseInt(document.getElementById("water-cups").value) || 0;
-    const progress = Math.min((cups / 8) * 100, 100);
+    const gallons = parseFloat(document.getElementById("water-gallons").value) || 0;
+    const progress = Math.min((gallons / 1) * 100, 100); // 1 gallon = 100% goal
     document.getElementById("water-progress").textContent = `${Math.round(progress)}%`;
     document.getElementById("water-bar").style.width = `${progress}%`;
-});
-
-// Step Count
-document.getElementById("update-steps").addEventListener("click", () => {
-    const steps = parseInt(document.getElementById("step-count").value) || 0;
-    document.getElementById("step-total").textContent = steps;
 });
 
 // Yoga Timer
