@@ -11,14 +11,16 @@
         <h1>Fitness Progress Tracker</h1>
     </header>
 
-    <div class="tabs">
-        <button class="tab-button active" data-tab="workout-tab">Workout Consistency <img src="workout-icon.png" alt="Workout Icon" class="icon"></button>
-        <button class="tab-button" data-tab="water-tab">Daily Water Intake <img src="water-icon.png" alt="Water Icon" class="icon"></button>
-        <button class="tab-button" data-tab="steps-tab">Step Count</button>
-        <button class="tab-button" data-tab="yoga-tab">Yoga</button>
-    </div>
+    <!-- Tab Buttons -->
+<div class="tabs">
+    <button class="tab-btn" onclick="openTab(event, 'workout')">Workout Consistency</button>
+    <button class="tab-btn" onclick="openTab(event, 'step-counter')">Step Counter</button>
+    <button class="tab-btn" onclick="openTab(event, 'water')">Daily Water Intake</button>
+    <button class="tab-btn" onclick="openTab(event, 'yoga')">Yoga</button>
+</div>
 
-    <div class="tab-content active" id="workout-tab">
+    <!-- Tab Content -->
+    <div class="tab-content" id="workout" style="display:none;">
         <h2>Workout Consistency</h2>
         <label for="workout-days">Workout Streak (days):</label>
         <input type="number" id="workout-days" placeholder="Enter days">
@@ -30,7 +32,7 @@
         </div>
     </div>
 
-    <div class="tab-content" id="water-tab">
+    <div class="tab-content" id="water" style="display:none;">
         <h2>Daily Water Intake</h2>
         <label for="water-gallons">Water intake (gallons):</label>
         <input type="number" id="water-gallons" placeholder="Enter gallons">
