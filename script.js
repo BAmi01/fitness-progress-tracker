@@ -1,65 +1,66 @@
-// Tab Switching
-const tabs = document.querySelectorAll(".tab-button");
-const tabContents = document.querySelectorAll(".tab-content");
-
-tabs.forEach(tab => {
-    tab.addEventListener("click", () => {
-        document.querySelector(".tab-button.active").classList.remove("active");
-        document.querySelector(".tab-content.active").classList.remove("active");
-
-        tab.classList.add("active");
-        const target = tab.getAttribute("data-tab");
-        document.getElementById(target).classList.add("active");
-    });
-});
-
-// Workout Consistency
-document.getElementById("update-workout").addEventListener("click", () => {
-    const days = parseInt(document.getElementById("workout-days").value) || 0;
-    document.getElementById("workout-streak").textContent = days;
-});
-
-// Water Intake
-document.getElementById("update-water").addEventListener("click", () => {
-    const cups = parseInt(document.getElementById("water-cups").value) || 0;
-    const progress = Math.min((cups / 8) * 100, 100);
-    document.getElementById("water-progress").textContent = `${Math.round(progress)}%`;
-    document.getElementById("water-bar").style.width = `${progress}%`;
-});
-
-// Step Count
-document.getElementById("update-steps").addEventListener("click", () => {
-    const steps = parseInt(document.getElementById("step-count").value) || 0;
-    document.getElementById("step-total").textContent = steps;
-});
-
-// Yoga Timer
-let yogaInterval;
-document.getElementById("start-timer").addEventListener("click", () => {
-    let timeLeft = parseInt(document.getElementById("timer-duration").value) * 60;
-    const timerDisplay = document.getElementById("timer-display");
-
-    clearInterval(yogaInterval);
-
-    if (isNaN(timeLeft) || timeLeft <= 0) {
-        alert("Enter a valid number of minutes.");
-        return;
+// Tabs Functionality
+function openTab(event, tabName) {
+    const tabContent = document.getElementsByClassName("tab-content");
+    for (let i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none";
     }
 
-    yogaInterval = setInterval(() => {
-        const minutes = Math.floor(timeLeft / 60);
-        const seconds = timeLeft % 60;
-        timerDisplay.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+    const tabButtons = document.getElementsByClassName("tab-btn");
+    for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove("active");
+    }
 
-        if (timeLeft <= 0) {
-            clearInterval(yogaInterval);
-            alert("Yoga session complete!");
-        }
-        timeLeft--;
-    }, 1000);
-});
+    document.getElementById(tabName).style.display = "block";
+    event.currentTarget.classList.add("active");
+}
 
-document.getElementById("stop-timer").addEventListener("click", () => {
-    clearInterval(yogaInterval);
-    document.getElementById("timer-display").textContent = "0:00";
-});
+// Default Tab
+document.getElementsByClassName("tab-btn")[0].click();
+
+// Workout Consistency
+function addWorkout() {
+    const workoutDate = document.getElementById("workout-date").value;
+    const calendarOutput = document.getElementById("calendar-output");
+
+    if (workoutDate) {
+        const dot = `<span>•</span>`;
+        calendarOutput.innerHTML += `<p>${workoutDate} ${dot}</p>`;
+    }
+}
+
+// Daily Water Intake
+function updateWater() {
+    const waterInput = document.getElementById("water-input").value;
+    const waterProgressBar = document.getElementById("water-progress-bar");
+    const waterOutput = document.getElementById("water-output");
+
+    const maxWater = 1; // Target in gallons
+    const progress = Math.min((waterInput / maxWater) * 100, 100);
+    waterProgressBar.style.width = `${progress}%`;
+    waterOutput.textContent = `Progress: ${Math.round(progress)}%`;
+}
+
+// Yoga Slideshow
+const yogaPoses = [
+    { name: "Mountain Pose", image: "pose1.jpg" },
+    { name: "Downward Dog", image: "pose2.jpg" },
+    { name: "Warrior Pose", image: "pose3.jpg" },
+    { name: "Tree Pose", image: "pose4.jpg" },
+    { name: "Bridge Pose", image: "pose5.jpg" },
+];
+
+let currentPoseIndex = 0;
+
+function showNextPose() {
+    const yogaPoseImage = document.getElementById("yoga-pose-image");
+    const yogaPoseName = document.getElementById("yoga-pose-name");
+
+    const pose = yogaPoses[currentPoseIndex];
+    yogaPoseImage.src = pose.image;
+    yogaPoseName.textContent = pose.name;
+
+    currentPoseIndex = (currentPoseIndex + 1) % yogaPoses.length;
+}
+
+// Start Yoga Timer
+setInterval(showNextPose, 60 * 1000); // 60 seconds

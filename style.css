@@ -1,75 +1,83 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     text-align: center;
 }
 
-header {
+h1 {
     background-color: #4CAF50;
     color: white;
-    padding: 1em 0;
+    padding: 10px;
 }
 
+/* Tabs */
 .tabs {
     display: flex;
     justify-content: center;
-    background-color: #f1f1f1;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
 }
 
-.tab-button {
+.tab-btn {
     padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #f1f1f1;
     border: none;
-    background: none;
     cursor: pointer;
-    outline: none;
-    font-size: 16px;
 }
 
-.tab-button.active {
+.tab-btn.active {
     background-color: #4CAF50;
     color: white;
-    border-radius: 5px 5px 0 0;
 }
 
 .tab-content {
     display: none;
+    margin: 20px auto;
     padding: 20px;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-.progress-bar {
-    width: 80%;
-    height: 20px;
-    background: #ddd;
-    margin: 10px auto;
+    background: white;
     border-radius: 5px;
+    max-width: 600px;
 }
 
-#water-bar {
-    width: 0;
-    height: 100%;
-    background: #4CAF50;
-    border-radius: 5px;
-}
-
-.yoga-poses {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+/* Calendar */
+.calendar {
     margin-top: 10px;
 }
 
-.pose {
+#calendar-output span {
+    color: green;
+    margin-right: 5px;
+}
+
+/* Water Progress Bar */
+.progress-bar-container {
+    width: 100%;
+    max-width: 600px;
+    background: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px auto;
+}
+
+#water-progress-bar {
+    height: 20px;
+    background: #4CAF50;
+    width: 0%;
+}
+
+/* Yoga Slideshow */
+.yoga-slideshow {
     text-align: center;
 }
 
-.pose img {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
+.yoga-slideshow img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
+

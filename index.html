@@ -4,106 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fitness Progress Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Fitness Progress Tracker</h1>
-    </header>
+    <h1>Fitness Progress Tracker</h1>
 
+    <!-- Tabs -->
     <div class="tabs">
-        <button class="tab-button active" data-tab="workout-tab">Workout Consistency</button>
-        <button class="tab-button" data-tab="water-tab">Daily Water Intake</button>
-        <button class="tab-button" data-tab="steps-tab">Step Count</button>
-        <button class="tab-button" data-tab="yoga-tab">Yoga</button>
+        <button class="tab-btn" onclick="openTab(event, 'workout')">Workout Consistency</button>
+        <button class="tab-btn" onclick="openTab(event, 'water')">Daily Water Intake</button>
+        <button class="tab-btn" onclick="openTab(event, 'steps')">Step Counter</button>
+        <button class="tab-btn" onclick="openTab(event, 'yoga')">Yoga</button>
     </div>
 
-    <div class="tab-content active" id="workout-tab" style="display:none;">
+    <!-- Workout Consistency Tab -->
+    <div class="tab-content" id="workout">
         <h2>Workout Consistency</h2>
-        <label for="workout-days">Workout Streak (days):</label>
-        <input type="number" id="workout-days" placeholder="Enter days">
-        <button id="update-workout">Update</button>
-        <p>Your current streak: <span id="workout-streak">0</span> days</p>
+        <p>Log your workouts to track weekly consistency.</p>
+        <input type="date" id="workout-date" />
+        <button onclick="addWorkout()">Log Workout</button>
+        <div class="calendar">
+            <h3>Weekly Calendar</h3>
+            <div id="calendar-output">No workouts logged yet.</div>
+        </div>
     </div>
 
-    <div class="tab-content" id="water-tab" style="display:none;">
+    <!-- Daily Water Intake Tab -->
+    <div class="tab-content" id="water">
         <h2>Daily Water Intake</h2>
-        <label for="water-cups">Water intake (cups):</label>
-        <input type="number" id="water-cups" placeholder="Enter cups">
-        <button id="update-water">Update</button>
-        <p>Water progress: <span id="water-progress">0%</span></p>
-        <div class="progress-bar">
-            <div id="water-bar"></div>
+        <p>Track your daily water intake (in gallons).</p>
+        <input type="number" id="water-input" placeholder="Enter gallons" />
+        <button onclick="updateWater()">Log Water</button>
+        <div class="progress-bar-container">
+            <div id="water-progress-bar"></div>
         </div>
+        <p id="water-output">Progress: 0%</p>
     </div>
 
-    <div class="tab-content" id="steps-tab" style="display:none;">
-        <h2>Step Count</h2>
-        <label for="step-count">Steps:</label>
-        <input type="number" id="step-count" placeholder="Enter steps">
-        <button id="update-steps">Update</button>
-        <p>Your total steps: <span id="step-total">0</span></p>
+    <!-- Step Counter Tab -->
+    <div class="tab-content" id="steps">
+        <h2>Step Counter</h2>
+        <p>Sync your device to track daily steps.</p>
+        <p>Feature coming soon!</p>
     </div>
 
-
-    <div class="tab-content" id="yoga-tab" style="display:none;">
+    <!-- Yoga Tab -->
+    <div class="tab-content" id="yoga">
         <h2>Yoga</h2>
-        <div>
-            <h3>Yoga Poses</h3>
-            <div class="yoga-poses">
-                <!-- Repeat this block for each pose -->
-                <div class="pose">
-                    <img src="childspose.png" alt="Child's Pose">
-                    <p>Child's Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="pose2.jpg" alt="Pose 2">
-                    <p>Cat Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="pose1.jpg" alt="Pose 3">
-                    <p>Cow Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="downwarddog.png" alt="Downward-Facing Dog Pose">
-                    <p>Downward-facing Dog Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="plank.png" alt="Plank Pose">
-                    <p>Plank Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="pose1.jpg" alt="Pose 6">
-                    <p>Cobra Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="pose1.jpg" alt="Pose 7">
-                    <p>Mountain Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="pose1.jpg" alt="Pose 8">
-                    <p>Warrior I Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="pose1.jpg" alt="Pose 9">
-                    <p>Warrior II Pose</p>
-                </div>
-                <div class="pose">
-                    <img src="pose1.jpg" alt="Pose 10">
-                    <p>Forward Fold Pose</p>
-                <!-- Repeat up to 10 poses -->
-            </div>
+        <div class="yoga-slideshow">
+            <img id="yoga-pose-image" src="" alt="Yoga Pose" />
+            <p id="yoga-pose-name"></p>
         </div>
         <div>
-            <h3>Meditation Sounds</h3>
-        <!-- Spotify Meditation Playlist Embed -->
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9uKNf5jGX6m?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <h3>Meditation Playlist</h3>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX9uKNf5jGX6m?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
     </div>
-    <div>
-        <h3>Yoga Timer</h3>
-        <input type="number" id="timer-duration" placeholder="Enter minutes">
-        <button id="start-timer">Start Timer</button>
-        <button id="stop-timer">Stop Timer</button>
-        <p id="timer-display">0:00</p>
-    </div>
-</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
