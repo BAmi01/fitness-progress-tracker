@@ -1,16 +1,19 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: 'Poppins', sans-serif; /* Modern and clean Google Font */
+    background: linear-gradient(to bottom, #e3f9e5, #e6f7ff); /* Soft gradient */
+    color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     text-align: center;
 }
 
 h1 {
     background-color: #4CAF50;
     color: white;
-    padding: 10px;
+    padding: 15px;
+    font-size: 2rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Tabs */
@@ -18,66 +21,132 @@ h1 {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    background: white;
+    padding: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .tab-btn {
-    padding: 10px 20px;
+    padding: 12px 20px;
     margin: 0 5px;
-    background-color: #f1f1f1;
+    background: #f1f1f1;
     border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #4CAF50;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.tab-btn.active {
-    background-color: #4CAF50;
+.tab-btn:hover, .tab-btn.active {
+    background: #4CAF50;
     color: white;
+    transform: scale(1.05);
 }
 
+/* Tab Content */
 .tab-content {
     display: none;
     margin: 20px auto;
     padding: 20px;
     background: white;
-    border-radius: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 600px;
 }
 
 /* Calendar */
 .calendar {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 #calendar-output span {
-    color: green;
+    color: #4CAF50;
     margin-right: 5px;
+    font-size: 1.2rem;
 }
 
 /* Water Progress Bar */
 .progress-bar-container {
     width: 100%;
-    max-width: 600px;
-    background: #ccc;
-    border-radius: 10px;
+    max-width: 500px;
+    background: #ddd;
+    border-radius: 20px;
     overflow: hidden;
-    margin: 10px auto;
+    margin: 20px auto;
+    position: relative;
+    height: 30px;
 }
 
 #water-progress-bar {
-    height: 20px;
+    height: 100%;
     background: #4CAF50;
+    transition: width 0.5s ease;
     width: 0%;
+}
+
+#water-output {
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 /* Yoga Slideshow */
 .yoga-slideshow {
     text-align: center;
+    margin: 20px 0;
 }
 
 .yoga-slideshow img {
     max-width: 100%;
     height: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
 }
 
+.yoga-slideshow p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+/* Meditation Playlist */
+iframe {
+    margin-top: 20px;
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* Transitions */
+.tab-content {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        margin-bottom: 10px;
+    }
+
+    .tab-content {
+        width: 90%;
+    }
+}
